@@ -139,14 +139,14 @@ header {
 }
 
 .active-nav-link::after {
-content: '';
-display: block;
-width: 100%;
-height: 4px;
-border-radius: 2px;
-background-color: var(--prassed-state-color);
-position: absolute;
-bottom: -25px;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--prassed-state-color);
+  position: absolute;
+  bottom: -25px;
 }
 
 .address {
@@ -233,7 +233,6 @@ bottom: -25px;
 .hero-btn:focus {
   background-color: var(--prassed-state-color);
 }
-
 
 /* ------------------- Features */
 
@@ -386,7 +385,9 @@ bottom: -25px;
 
 .customers-icon {
   fill: currentColor;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-icon-link:hover,
@@ -417,7 +418,6 @@ bottom: -25px;
   gap: 24px;
 }
 
-
 .portfolio-list {
   display: flex;
   flex-wrap: wrap;
@@ -430,13 +430,30 @@ bottom: -25px;
 }
 
 .img-thumb {
-position: relative;
-overflow: hidden;
-
+  position: relative;
+  overflow: hidden;
 }
 
 .portfolio-item img {
   display: block;
+}
+
+.portfolio-img-desc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  background: var(--primary-brand-color);
+  padding: 40px 32px;
+  height: 100%;
+  position: absolute;
+  top: 100%;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-link:hover .portfolio-img-desc {
+  transform: translateY(-100%);
 }
 
 .portfolio-item-container {
@@ -449,8 +466,8 @@ overflow: hidden;
 }
 
 .portfolio-link {
-display: block;
-transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-link:hover,
@@ -475,7 +492,10 @@ transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--accent-color);
   border-radius: 4px;
   padding: 12px 24px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-btn:hover,
@@ -569,4 +589,66 @@ transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
   width: 24px;
   height: 24px;
+}
+
+/* ----------------------MODAL */
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal {
+  padding: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 408px;
+  min-height: 576px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+transform: translate(-50%, -50%) scale(0);
+}
+
+.modal-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  background-color: var(--accent-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-icon {
+  width: 8px;
+  height: 8px;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  fill: var(--white-color);
+  background-color: var(--prassed-state-color);
+  border: 1px solid transparent;
+}
+
+.is-hidden {
+  opacity: 0; 
+  visibility: hidden;
+  pointer-events: none;
 }
